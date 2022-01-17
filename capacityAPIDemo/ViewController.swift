@@ -61,24 +61,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return "Writen by Kevin Wang @ 2022"
     }
     
-//    func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-//        if(action.description == "copy:"){
-//            return true
-//        } else {
-//            return false
-//        }
-//    }
-//
-//    func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
-//        if(action.description == "copy:"){
-//            print("copy...")
-//        }
-//    }
-//
-//    func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
-    
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: {
             suggestedActions in
@@ -96,9 +78,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         })
         return configuration
     }
-   
-    
-   
 
     override func viewDidLoad() {
         super.viewDidLoad()
