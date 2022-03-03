@@ -28,8 +28,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         switch indexPath.row{
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "c1", for: indexPath)
-            cell.textLabel?.text = path
-            cell.detailTextLabel?.text = ""
+            cell.textLabel?.text = "Path"
+            cell.detailTextLabel?.text = path
+            cell.detailTextLabel?.numberOfLines = 0
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "c1", for: indexPath)
@@ -58,7 +59,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "Writen by Kevin Wang @ 2022"
+        return "Written by Kevin Wang @ 2022"
     }
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
@@ -77,6 +78,23 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return UIMenu(title: "",  children: [copyKeyAction,copyValueAction])
         })
         return configuration
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let copyAction = UIContextualAction(style: .normal, title: "Copy") { action, view, completionHanddler in
+            action.image = UIImage(systemName: "doc.on.doc")
+            
+            let alertController = UIAlertController(title: "Hi", message: "Hello, World", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(alertAction)
+            self.present(alertController, animated: true)
+            
+            completionHanddler(true)
+            
+        }
+        
+        let swipeAction = UISwipeActionsConfiguration(actions: [copyAction])
+        return swipeAction
     }
 
     override func viewDidLoad() {
